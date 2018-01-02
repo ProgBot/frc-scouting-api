@@ -26,11 +26,11 @@ function clientDL() {
       const pullRes = shell.exec('git pull -f');
       shell.echo(chalk.yellow('_________________\n'));
       if (pullRes.code === 0) {
-        doClone = false;
         if (!pullRes.stdout.startsWith('Already up-to-date.')) {
           shell.echo(chalk.cyan('Client updated.'));
         }
       } else {
+        doClone = true;
         shell.echo(chalk.yellow('Client update failed. Trying redownload...'));
         shell.echo(chalk.yellow('Deleting old client...'));
         shell.cd('..');
