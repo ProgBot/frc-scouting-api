@@ -5,7 +5,7 @@ module.exports = function status(server) {
   router.get('/lbstatus', server.loopback.status());
   // Only have the root url lead to the status page if we're not serving a client
   if (fs.existsSync('client')) {
-    router.get('/', server.loopback.status());
+    router.get('/lbstatus', server.loopback.status());
   }
   server.use(router);
 };
